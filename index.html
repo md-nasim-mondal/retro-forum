@@ -15,7 +15,7 @@
   </head>
   <body>
     <header class="container mx-auto">
-        <!-- navbar section -->
+      <!-- navbar section -->
       <nav class="my-12">
         <div class="navbar bg-base-100">
           <div class="navbar-start flex-1">
@@ -64,7 +64,9 @@
                 </li>
               </ul>
             </div>
-            <a class="font-black text-xl  lg:text-4xl text-[#12132D]">ClassicEcho</a>
+            <a class="font-black text-xl lg:text-4xl text-[#12132D]"
+              >ClassicEcho</a
+            >
           </div>
 
           <div class="navbar-end gap-6">
@@ -91,14 +93,66 @@
         </div>
       </nav>
       <!-- Banner Section -->
-      <section class="flex flex-col lg:flex-row p-24">
-        <div>
-            <h1>Welcome to the
-                <br>
-                 <span class="">ClassicEcho</span> Forum</h1>
+      <section
+        class="flex flex-col lg:flex-row p-8 lg:p-24 justify-between items-center bg-center bg-no-repeat bg-cover bg-[#12132D] rounded-[32px]"
+        style="background-image: url(./images/bgbanner.png)"
+      >
+        <div class="flex flex-col space-y-6">
+          <h1 class="text-6xl font-black text-[#FFFFFF]">
+            Welcome to the
+            <br />
+            <span
+              style="
+                background: linear-gradient(
+                  90deg,
+                  #797dfc 0.7%,
+                  rgba(121, 125, 252, 0.4) 41%
+                );
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              "
+              >ClassicEcho</span
+            >
+            Forum
+          </h1>
+          <p class="text-xl font-medium text-[#FFFFFFCC]">
+            Share your favorite opinion and win and wp
+            <br />
+            forum coffee mug!
+          </p>
+          <div class="flex flex-col gap-4 lg:gap-0 lg:flex-row rounded-[50px] lg:bg-[#FFFFFF] p-2 mt-2">
+            <input 
+              type="text"
+              placeholder="Search here anything"
+              class="placeholder-[#03071280] flex-1 min-h-[8vh] lg:ml-2 lg:min-h-2 rounded-2xl pl-2"
+            />
+            <button
+              class="btn btn-primary rounded-[50px] lg:px-8 bg-[#797DFC] border-none font-bold text-lg lg:text-xl text-[#FFFFFF]"
+            >
+              Search
+            </button>
+          </div>
         </div>
-        <div>
-
+        <div
+          class="p-12 space-y-6 lg:w-[46%] flex flex-col text-2xl font-medium text-[#12132DCC] justify-center items-center rounded-[32px] bg-[#FFFFFF]"
+        >
+          <div class="flex w-full gap-5 justify-between">
+            <p>Registered Users</p>
+            <p>01</p>
+          </div>
+          <div class="flex w-full gap-5 justify-between">
+            <p>Forum</p>
+            <p>05</p>
+          </div>
+          <div class="flex w-full gap-5 justify-between">
+            <p>Topics</p>
+            <p>01</p>
+          </div>
+          <div class="flex w-full gap-5 justify-between">
+            <p>Replies</p>
+            <p>01</p>
+          </div>
         </div>
       </section>
     </header>
