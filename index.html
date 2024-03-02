@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClassicEcho Forum</title>
+
+    <!-- Link for Tailwind CSS and DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="container mx-auto">
+        <!-- navbar section -->
+      <nav class="my-12">
+        <div class="navbar bg-base-100">
+          <div class="navbar-start flex-1">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <div class="tooltip" data-tip="Home">
+                    <button><img src="./icon/home.svg" alt="home" /></button>
+                  </div>
+                </li>
+                <li>
+                  <div class="tooltip" data-tip="Tooltip">
+                    <button>
+                      <img src="./icon/tooltip.svg" alt="tooltip" />
+                    </button>
+                  </div>
+                </li>
+                <li>
+                  <div class="tooltip" data-tip="Add">
+                    <button><img src="./icon/add.svg" alt="add-btn" /></button>
+                  </div>
+                </li>
+                <li>
+                  <div class="tooltip" data-tip="Flag">
+                    <button><img src="./icon/flag.svg" alt="flag" /></button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <a class="font-black text-xl  lg:text-4xl text-[#12132D]">ClassicEcho</a>
+          </div>
+
+          <div class="navbar-end gap-6">
+            <div class="navbar-center hidden lg:flex gap-2">
+              <div class="tooltip" data-tip="Home">
+                <button><img src="./icon/home.svg" alt="home" /></button>
+              </div>
+              <div class="tooltip" data-tip="Tooltip">
+                <button><img src="./icon/tooltip.svg" alt="tooltip" /></button>
+              </div>
+              <div class="tooltip" data-tip="Add">
+                <button><img src="./icon/add.svg" alt="add-btn" /></button>
+              </div>
+              <div class="tooltip" data-tip="Flag">
+                <button><img src="./icon/flag.svg" alt="flag" /></button>
+              </div>
+            </div>
+            <button
+              class="btn btn-primary rounded-[50px] lg:px-10 bg-[#797DFC] border-none font-bold text-lg lg:text-xl text-[#FFFFFF]"
+            >
+              Sign In
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!-- Banner Section -->
+      <section class="flex flex-col lg:flex-row p-24">
+        <div>
+            <h1>Welcome to the
+                <br>
+                 <span class="">ClassicEcho</span> Forum</h1>
+        </div>
+        <div>
+
+        </div>
+      </section>
+    </header>
+  </body>
+</html>
