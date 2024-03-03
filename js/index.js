@@ -31,9 +31,9 @@ const displayPosts = (posts) => {
                   class="indicator-item badge border-none badge-secondary ${indicator}"
                 ></span>
                 <div
-                  class="grid w-32 h-32 bg-base-300 place-items-center rounded-2xl"
+                  class="grid w-32 h-32 bg-base-300 place-items-center rounded-3xl"
                 >
-                  <img src="${post.image}" alt="" />
+                  <img class="rounded-3xl" src="${post.image}" alt="" />
                 </div>
             </div>
 
@@ -123,7 +123,7 @@ const displayPosts = (posts) => {
                     </div>
                   </div>
 
-                <button onclick="readMessage()">
+                <button onclick="readMessage('${post.title}','${post.view_count}')" class="target-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="28"
@@ -153,13 +153,50 @@ const displayPosts = (posts) => {
   });
 };
 
+loadPostsCard();
+
 let readCount = 0;
 
-const readMessage = () => {
+const readMessage = (title, view_count) => {
     readCount++;
+    const postViewContainer = document.getElementById("read-post-container");
+    const readPost = document.createElement('div');
+    readPost.innerHTML = `
+              <div class="flex w-full justify-between p-4 bg-[#FFFFFF] rounded-2xl">
+                <h5 class="text-xl text-[#12132D] font-bold">${title}</h5>
+                <div class="flex gap-x-2 text-base">
+                  <span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28"
+                        height="28"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                      >
+                        <path
+                          d="M11.6667 14C11.6667 14.6188 11.9125 15.2123 12.3501 15.6499C12.7877 16.0875 13.3812 16.3333 14 16.3333C14.6188 16.3333 15.2123 16.0875 15.6499 15.6499C16.0875 15.2123 16.3333 14.6188 16.3333 14C16.3333 13.3812 16.0875 12.7877 15.6499 12.3501C15.2123 11.9125 14.6188 11.6667 14 11.6667C13.3812 11.6667 12.7877 11.9125 12.3501 12.3501C11.9125 12.7877 11.6667 13.3812 11.6667 14Z"
+                          stroke="#12132D"
+                          stroke-opacity="0.6"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M24.5 14C21.7 18.6667 18.2 21 14 21C9.8 21 6.3 18.6667 3.5 14C6.3 9.33333 9.8 7 14 7C18.2 7 21.7 9.33333 24.5 14Z"
+                          stroke="#12132D"
+                          stroke-opacity="0.6"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg></span>
+                  <p class="font-inter text-base text-[#12132d99]">${view_count}</p>
+                </div>
+              </div>
+    `;
+    postViewContainer.appendChild(readPost);
     const readMessageNumber = document.getElementById("read-number");
-    
     readMessageNumber.innerText = readCount;
+
 } 
 
-loadPostsCard();
+
