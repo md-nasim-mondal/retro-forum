@@ -491,12 +491,11 @@ const handleSearch = () => {
 
     const allPostContainer = document.getElementById("posts-container");
     allPostContainer.classList.add("hidden");
-    
-    categoryPostContainer.classList.remove("hidden");
   
   
   setTimeout(function () {
     categoryPostsCard(searchText);
+    categoryPostContainer.classList.remove("hidden");
   },2000)
 }
 
