@@ -29,10 +29,10 @@
     />
     <!-- for using custom font  -->
     <style>
-      .font-mulish{
+      .font-mulish {
         font-family: "Mulish", sans-serif;
       }
-      .font-inter{
+      .font-inter {
         font-family: "Inter", sans-serif;
       }
     </style>
@@ -149,12 +149,14 @@
           <div
             class="flex flex-col gap-4 lg:gap-0 lg:flex-row rounded-[50px] lg:bg-[#FFFFFF] p-2 mt-2"
           >
-            <input id="search-field"
+            <input
+              id="search-field"
               type="text"
               placeholder="Search here anything"
               class="placeholder-[#03071280] flex-1 min-h-[8vh] lg:ml-2 lg:min-h-2 rounded-2xl pl-2"
             />
-            <button onclick="handleSearch()"
+            <button
+              onclick="handleSearch()"
               class="btn btn-primary rounded-[50px] lg:px-8 bg-[#797DFC] border-none font-bold text-lg lg:text-xl text-[#FFFFFF] mx-auto w-[60%] lg:w-auto"
             >
               Search
@@ -201,19 +203,27 @@
         </div>
         <div class="flex flex-col lg:flex-row gap-6 mt-10">
           <!-- left side for the card -->
-          <div id="posts-container" class="flex-1 flex flex-col gap-6">
-
+          <div id="posts-container" class="flex-1 flex flex-col gap-6"></div>
+          <div
+            id="category-posts-container"
+            class="flex-1 flex flex-col gap-6 hidden"
+          ></div>
+          <div id="spinner-container" class="flex-1 flex flex-row justify-center items-center hidden">
+            <span class="loading loading-spinner loading-xs"></span>
+            <span class="loading loading-spinner loading-sm"></span>
+            <span class="loading loading-spinner loading-md"></span>
+            <span class="loading loading-spinner loading-lg"></span>
           </div>
-          <div id="category-posts-container" class="flex-1 flex flex-col gap-6 hidden">
-
-          </div>
-          <div  class="lg:w-[26%]">
-            <div id="read-post-container" class="flex flex-col space-y-5 rounded-3xl h-auto bg-[#12132D0D] p-6">
+          <div class="lg:w-[26%]">
+            <div
+              id="read-post-container"
+              class="flex flex-col space-y-5 rounded-3xl h-auto bg-[#12132D0D] p-6"
+            >
               <div class="flex w-full justify-between">
                 <h5 class="text-xl font-bold text-[#12132D]">Title</h5>
                 <div class="flex gap-x-2 text-base">
                   <span><img src="./icon/correct-sign.svg" alt="" /></span>
-                  <p  class="font-normal text-[#12132D99]">
+                  <p class="font-normal text-[#12132D99]">
                     Mark as read (<span id="read-number">0</span>)
                   </p>
                 </div>
@@ -263,10 +273,8 @@
         <!-- latest post card -->
         <div
           id="latest-posts-card-container"
-          class="grid  gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-        >
-          
-        </div>
+          class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        ></div>
       </section>
     </main>
     <footer

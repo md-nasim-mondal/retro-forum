@@ -474,19 +474,25 @@ const displayLatestPosts = (posts) => {
 
 // handle search button
 const handleSearch = () => {
-  const searchField = document.getElementById("search-field");
-  const searchText = searchField.value;
+  const spinnerContainer = document.getElementById("spinner-container");
+  spinnerContainer.classList.remove('hidden');
+   setTimeout(function () {
+     spinnerContainer.classList.add("hidden");
+   }, 2000);
+  setTimeout(function () {
+    const searchField = document.getElementById("search-field");
+    const searchText = searchField.value;
 
-  const allPostContainer = document.getElementById("posts-container");
-  allPostContainer.classList.add('hidden');
-  const categoryPostContainer = document.getElementById('category-posts-container');
-  categoryPostContainer.classList.remove('hidden');
+    const allPostContainer = document.getElementById("posts-container");
+    allPostContainer.classList.add("hidden");
+    const categoryPostContainer = document.getElementById(
+      "category-posts-container"
+    );
+    categoryPostContainer.classList.remove("hidden");
 
-  categoryPostsCard(searchText);
+    categoryPostsCard(searchText);
+  },2000)
 }
-
-
-
 
 latestPostCard();
 
