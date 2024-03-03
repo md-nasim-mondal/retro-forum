@@ -218,9 +218,11 @@ const displayLatestPosts = (posts) => {
     latestPostCard.classList = `space-y-4 p-4 border-[1px] border-solid border-[#12132d26] rounded-3xl mt-8 lg:mt-12`;
     latestPostCard.innerHTML = `
     <div class="text-center mx-auto w-full">
-              <img class="w-full mx-auto rounded-3xl" src="${post.cover_image}" alt="" />
+              <img class="w-full mx-auto rounded-3xl" src="${
+                post.cover_image
+              }" alt="" />
             </div>
-            <div>
+            <div class="space-y-4">
               <div class="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -277,7 +279,9 @@ const displayLatestPosts = (posts) => {
                   </clipPath>
                 </defs>
               </svg>
-              <p class="text-[#12132d99] text-base">${post.author.posted_date}</p>
+              <p class="text-[#12132d99] text-base">${
+                post?.author?.posted_date || "No publish date"
+              }</p>
             </div>
             <h5 class="text-lg text-[#12132D] font-extrabold">
               ${post.title}
@@ -288,13 +292,17 @@ const displayLatestPosts = (posts) => {
 
             <div class="flex gap-4">
               <div>
-                <img class="w-11 h-11 rounded-full" src="${post.profile_image}" alt="" />
+                <img class="w-11 h-11 rounded-full" src="${
+                  post.profile_image
+                }" alt="" />
               </div>
               <div>
                 <h6 class="text-base font-bold text-[#12132D]">
                   Cameron Williamson
                 </h6>
-                <p class="text-[#12132d99] text-sm">${post.author.designation}</p>
+                <p class="text-[#12132d99] text-sm">${
+                  post?.author?.designation || "Unknown"
+                }</p>
               </div>
             </div>
             </div>
