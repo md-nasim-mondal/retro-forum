@@ -136,7 +136,7 @@ const displayPosts = (posts) => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time}</p>
+                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time} min</p>
                     </div>
                   </div>
 
@@ -281,7 +281,7 @@ const displayCategoryPosts = (posts) => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time}</p>
+                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time} min</p>
                     </div>
                   </div>
 
