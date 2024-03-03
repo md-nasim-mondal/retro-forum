@@ -5,7 +5,7 @@ const loadPostsCard = async () => {
   const data = await res.json();
   // console.log(data);
   const posts = data.posts;
-  console.log(posts);
+//   console.log(posts);
   displayPosts(posts);
 };
 
@@ -14,7 +14,7 @@ const displayPosts = (posts) => {
   const postsContainer = document.getElementById("posts-container");
 
   posts.forEach((post) => {
-      console.log(post);
+    //   console.log(post);
       if (post.isActive == true) {
           indicator = `bg-[green]`
       } else {
@@ -33,7 +33,7 @@ const displayPosts = (posts) => {
                 <div
                   class="grid w-32 h-32 bg-base-300 place-items-center rounded-3xl"
                 >
-                  <img class="rounded-3xl" src="${post.image}" alt="" />
+                  <img class="rounded-xl" src="${post.image}" alt="" />
                 </div>
             </div>
 
@@ -123,7 +123,7 @@ const displayPosts = (posts) => {
                     </div>
                   </div>
 
-                <button onclick="readMessage('${post.title}','${post.view_count}')" class="target-btn">
+                <button onclick="readMessage(&quot;${post.title}&quot;, &quot;${post.view_count}&quot;)" class="target-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="28"
@@ -149,7 +149,8 @@ const displayPosts = (posts) => {
     `;
 
     // step-4: append Child
-    postsContainer.appendChild(postCard);
+      postsContainer.appendChild(postCard);
+      
   });
 };
 
@@ -199,4 +200,108 @@ const readMessage = (title, view_count) => {
 
 } 
 
+
+const latestPostCard = async () => {
+    const res = await fetch(
+      ` https://openapi.programming-hero.com/api/retro-forum/latest-posts`
+    );
+  const data = await res.json();
+  displayLatestPosts(data);
+
+}
+
+const displayLatestPosts = (posts) => {
+  const latestPostCardContainer = document.getElementById('latest-posts-card-container');
+  posts.forEach((post) => {
+    console.log(post);
+    const latestPostCard = document.createElement('div');
+    latestPostCard.classList = `space-y-4 p-4 border-[1px] border-solid border-[#12132d26] rounded-3xl mt-8 lg:mt-12`;
+    latestPostCard.innerHTML = `
+    <div class="text-center mx-auto w-full">
+              <img class="w-full mx-auto rounded-3xl" src="${post.cover_image}" alt="" />
+            </div>
+            <div>
+              <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_29_1881)">
+                  <path
+                    d="M4 7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7Z"
+                    stroke="#12132D"
+                    stroke-opacity="0.6"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16 3V7"
+                    stroke="#12132D"
+                    stroke-opacity="0.6"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 3V7"
+                    stroke="#12132D"
+                    stroke-opacity="0.6"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4 11H20"
+                    stroke="#12132D"
+                    stroke-opacity="0.6"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z"
+                    stroke="#12132D"
+                    stroke-opacity="0.6"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_29_1881">
+                    <rect width="24" height="24" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <p class="text-[#12132d99] text-base">${post.author.posted_date}</p>
+            </div>
+            <h5 class="text-lg text-[#12132D] font-extrabold">
+              ${post.title}
+            </h5>
+            <p class="text-base text-[#12132d99]">
+              ${post.description}
+            </p>
+
+            <div class="flex gap-4">
+              <div>
+                <img class="w-11 h-11 rounded-full" src="${post.profile_image}" alt="" />
+              </div>
+              <div>
+                <h6 class="text-base font-bold text-[#12132D]">
+                  Cameron Williamson
+                </h6>
+                <p class="text-[#12132d99] text-sm">${post.author.designation}</p>
+              </div>
+            </div>
+            </div>
+    `;
+    latestPostCardContainer.appendChild(latestPostCard);
+  })
+}
+
+latestPostCard();
 
