@@ -5,8 +5,17 @@ const loadPostsCard = async () => {
   const data = await res.json();
   // console.log(data);
   const posts = data.posts;
-//   console.log(posts);
-  displayPosts(posts);
+  //   console.log(posts);
+  
+  const spinnerContainer = document.getElementById("spinner-container");
+  spinnerContainer.classList.remove("hidden");
+  setTimeout(function () {
+    spinnerContainer.classList.add("hidden");
+  }, 2000);
+  setTimeout(function () {
+    displayPosts(posts);
+  }, 2000);
+  
 };
 
 const categoryPostsCard = async (searchText) => {
