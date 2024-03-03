@@ -474,22 +474,28 @@ const displayLatestPosts = (posts) => {
 
 // handle search button
 const handleSearch = () => {
+  const categoryPostContainer = document.getElementById(
+    "category-posts-container"
+  );
   const spinnerContainer = document.getElementById("spinner-container");
   spinnerContainer.classList.remove('hidden');
+  categoryPostContainer.classList.add("hidden");
    setTimeout(function () {
      spinnerContainer.classList.add("hidden");
+     categoryPostContainer.classList.remove("hidden");
    }, 2000);
-  setTimeout(function () {
+  
+  
     const searchField = document.getElementById("search-field");
     const searchText = searchField.value;
 
     const allPostContainer = document.getElementById("posts-container");
     allPostContainer.classList.add("hidden");
-    const categoryPostContainer = document.getElementById(
-      "category-posts-container"
-    );
+    
     categoryPostContainer.classList.remove("hidden");
-
+  
+  
+  setTimeout(function () {
     categoryPostsCard(searchText);
   },2000)
 }
