@@ -90,7 +90,7 @@ const displayPosts = (posts) => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time}</p>
+                      <p class="font-inter text-base text-[#12132d99]">${post.comment_count}</p>
                     </div>
                     <div class="flex gap-3 items-center">
                       <svg
@@ -136,7 +136,7 @@ const displayPosts = (posts) => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p class="font-inter text-base text-[#12132d99]">5 min</p>
+                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time}</p>
                     </div>
                   </div>
 
@@ -176,7 +176,7 @@ const displayCategoryPosts = (posts) => {
   // clear the container cards before adding new post cards
   postsContainer.textContent = " ";
   posts.forEach((post) => {
-    //   console.log(post);
+    console.log(post);
     if (post.isActive == true) {
       indicator = `bg-[green]`;
     } else {
@@ -235,7 +235,7 @@ const displayCategoryPosts = (posts) => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time}</p>
+                      <p class="font-inter text-base text-[#12132d99]">${post.comment_count}</p>
                     </div>
                     <div class="flex gap-3 items-center">
                       <svg
@@ -281,7 +281,7 @@ const displayCategoryPosts = (posts) => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p class="font-inter text-base text-[#12132d99]">5 min</p>
+                      <p class="font-inter text-base text-[#12132d99]">${post.posted_time}</p>
                     </div>
                   </div>
 
