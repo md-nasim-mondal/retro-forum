@@ -6,16 +6,13 @@ const loadPostsCard = async () => {
   // console.log(data);
   const posts = data.posts;
   //   console.log(posts);
-  
+
   const spinnerContainer = document.getElementById("spinner-container");
   spinnerContainer.classList.remove("hidden");
   setTimeout(function () {
     spinnerContainer.classList.add("hidden");
-  }, 2000);
-  setTimeout(function () {
     displayPosts(posts);
   }, 2000);
-  
 };
 
 const categoryPostsCard = async (searchText) => {
@@ -29,19 +26,17 @@ const categoryPostsCard = async (searchText) => {
   displayCategoryPosts(posts);
 };
 
-
-
 const displayPosts = (posts) => {
   // step-1: get the container by Id
   const postsContainer = document.getElementById("posts-container");
 
   posts.forEach((post) => {
     //   console.log(post);
-      if (post.isActive == true) {
-          indicator = `bg-[green]`
-      } else {
-          indicator = `bg-[red]`
-      }
+    if (post.isActive == true) {
+      indicator = `bg-[green]`;
+    } else {
+      indicator = `bg-[red]`;
+    }
     // step-2: create a div
     const postCard = document.createElement("div");
     postCard.classList = `flex bg-[#F3F3F5] w-full p-10 rounded-3xl gap-10 flex-col lg:flex-row mb-12 lg:mb-0`;
@@ -171,23 +166,22 @@ const displayPosts = (posts) => {
     `;
 
     // step-4: append Child
-      postsContainer.appendChild(postCard);
-      
+    postsContainer.appendChild(postCard);
   });
 };
 
 const displayCategoryPosts = (posts) => {
   // step-1: get the container by Id
   const postsContainer = document.getElementById("category-posts-container");
-  // clear the container cards before adding new post cards 
+  // clear the container cards before adding new post cards
   postsContainer.textContent = " ";
   posts.forEach((post) => {
     //   console.log(post);
-      if (post.isActive == true) {
-          indicator = `bg-[green]`
-      } else {
-          indicator = `bg-[red]`
-      }
+    if (post.isActive == true) {
+      indicator = `bg-[green]`;
+    } else {
+      indicator = `bg-[red]`;
+    }
     // step-2: create a div
     const postCard = document.createElement("div");
     postCard.classList = `flex bg-[#F3F3F5] w-full p-10 rounded-3xl gap-10 flex-col lg:flex-row mb-12 lg:mb-0`;
@@ -317,8 +311,7 @@ const displayCategoryPosts = (posts) => {
     `;
 
     // step-4: append Child
-      postsContainer.appendChild(postCard);
-      
+    postsContainer.appendChild(postCard);
   });
 };
 
@@ -327,10 +320,10 @@ loadPostsCard();
 let readCount = 0;
 
 const readMessage = (title, view_count) => {
-    readCount++;
-    const postViewContainer = document.getElementById("read-post-container");
-    const readPost = document.createElement('div');
-    readPost.innerHTML = `
+  readCount++;
+  const postViewContainer = document.getElementById("read-post-container");
+  const readPost = document.createElement("div");
+  readPost.innerHTML = `
               <div class="flex w-full justify-between p-4 bg-[#FFFFFF] rounded-2xl">
                 <h5 class="text-xl text-[#12132D] font-bold">${title}</h5>
                 <div class="flex gap-x-2 text-base">
@@ -362,29 +355,36 @@ const readMessage = (title, view_count) => {
                 </div>
               </div>
     `;
-    postViewContainer.appendChild(readPost);
-    const readMessageNumber = document.getElementById("read-number");
-    readMessageNumber.innerText = readCount;
-
-} 
-
+  postViewContainer.appendChild(readPost);
+  const readMessageNumber = document.getElementById("read-number");
+  readMessageNumber.innerText = readCount;
+};
 
 // Started Latest Post Section
 
 const latestPostCard = async () => {
-    const res = await fetch(
-      ` https://openapi.programming-hero.com/api/retro-forum/latest-posts`
-    );
+  const res = await fetch(
+    ` https://openapi.programming-hero.com/api/retro-forum/latest-posts`
+  );
   const data = await res.json();
-  displayLatestPosts(data);
 
-}
+  const latestSpinnerContainer = document.getElementById(
+    "latest-spinner-container"
+  );
+  latestSpinnerContainer.classList.remove("hidden");
+  setTimeout(function () {
+    latestSpinnerContainer.classList.add("hidden");
+    displayLatestPosts(data);
+  }, 2000);
+};
 
 const displayLatestPosts = (posts) => {
-  const latestPostCardContainer = document.getElementById('latest-posts-card-container');
+  const latestPostCardContainer = document.getElementById(
+    "latest-posts-card-container"
+  );
   posts.forEach((post) => {
     // console.log(post);
-    const latestPostCard = document.createElement('div');
+    const latestPostCard = document.createElement("div");
     latestPostCard.classList = `space-y-4 p-4 border-[1px] border-solid border-[#12132d26] rounded-3xl mt-8 lg:mt-12`;
     latestPostCard.innerHTML = `
     <div class="text-center mx-auto w-full">
@@ -478,8 +478,8 @@ const displayLatestPosts = (posts) => {
             </div>
     `;
     latestPostCardContainer.appendChild(latestPostCard);
-  })
-}
+  });
+};
 
 // handle search button
 const handleSearch = () => {
@@ -487,26 +487,23 @@ const handleSearch = () => {
     "category-posts-container"
   );
   const spinnerContainer = document.getElementById("spinner-container");
-  spinnerContainer.classList.remove('hidden');
+  spinnerContainer.classList.remove("hidden");
   categoryPostContainer.classList.add("hidden");
-   setTimeout(function () {
-     spinnerContainer.classList.add("hidden");
-     categoryPostContainer.classList.remove("hidden");
-   }, 2000);
-  
-  
-    const searchField = document.getElementById("search-field");
-    const searchText = searchField.value;
+  setTimeout(function () {
+    spinnerContainer.classList.add("hidden");
+    categoryPostContainer.classList.remove("hidden");
+  }, 2000);
 
-    const allPostContainer = document.getElementById("posts-container");
-    allPostContainer.classList.add("hidden");
-  
-  
+  const searchField = document.getElementById("search-field");
+  const searchText = searchField.value;
+
+  const allPostContainer = document.getElementById("posts-container");
+  allPostContainer.classList.add("hidden");
+
   setTimeout(function () {
     categoryPostsCard(searchText);
     categoryPostContainer.classList.remove("hidden");
-  },2000)
-}
+  }, 2000);
+};
 
 latestPostCard();
-
