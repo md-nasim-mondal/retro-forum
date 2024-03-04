@@ -135,7 +135,7 @@ const displayPosts = (posts) => {
                     </div>
                   </div>
 
-                <button onclick="readMessage(&quot;${post.title}&quot;, &quot;${post.view_count}&quot;)" class="target-btn">
+                <button onclick="readMessage(\`${post.title}\`, \`${post.view_count}\`)" class="target-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="28"
