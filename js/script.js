@@ -5,25 +5,25 @@ const allPost = "https://openapi.programming-hero.com/api/retro-forum/";
 const categoryPost =
   "https://openapi.programming-hero.com/api/retro-forum/posts?category=";
 
-const loadPostsCard = async (post, searchText, postContainer) => {
+const loadPostsCard = async (post, searchText) => {
   const res = await fetch(`${post}${searchText}`);
   const data = await res.json();
   const posts = data.posts;
   const spinnerContainer = document.getElementById("spinner-container");
   spinnerContainer.classList.remove("hidden");
-  const postCardContainer = document.getElementById(postContainer);
+  const postCardContainer = document.getElementById("posts-container");
   postCardContainer.classList.add("hidden");
   setTimeout(function () {
     spinnerContainer.classList.add("hidden");
     postCardContainer.classList.remove("hidden");
-    displayPosts(posts, postContainer);
+    displayPosts(posts);
   }, 2000);
 };
 
 
-const displayPosts = (posts, containerId) => {
+const displayPosts = (posts) => {
   // step-1: get the container by Id
-  const postsContainer = document.getElementById(containerId);
+  const postsContainer = document.getElementById("posts-container");
   // clear the container cards before adding new post cards
   postsContainer.textContent = " ";
   posts.forEach((post) => {
@@ -165,7 +165,7 @@ const displayPosts = (posts, containerId) => {
   });
 };
 
-loadPostsCard(allPost, "posts", "posts-container");
+loadPostsCard(allPost, "posts");
 
 let readCount = 0;
 
@@ -214,25 +214,16 @@ const readMessage = (title, view_count) => {
 
 // handle search button
 const handleSearch = () => {
-  const searchField = document.getElementById("search-field");
-  const searchText = searchField.value;
-
-  loadPostsCard(categoryPost, searchText, "category-posts-container");
-  const categoryPostContainer = document.getElementById(
-    "category-posts-container"
-  );
-  categoryPostContainer.classList.add("hidden");
+  const searchField = document.getElementById("search-field").value;
+  const searchText = searchField.toLowerCase();
+  if (searchText == 'music' || searchText == 'comedy' || searchText == 'coding') {
+    loadPostsCard(categoryPost, searchText);
+  } else {
+    const postsContainer = document.getElementById("posts-container");
+    postsContainer.innerHTML = `<h1 class="flex justify-center text-center items-center text-5xl font-black text-red-600 mx-auto w-[80%]">No Data Found.
+    <br> Please Input Correct Category</h1>`
+  }
   
-  const spinnerContainer = document.getElementById("spinner-container");
-  spinnerContainer.classList.remove("hidden");
-  
-  setTimeout(function () {
-    categoryPostContainer.classList.remove("hidden");
-    spinnerContainer.classList.add("hidden");
-  }, 2000);
-  
-  const allPostContainer = document.getElementById("posts-container");
-  allPostContainer.classList.add("hidden");
 };
 
 
